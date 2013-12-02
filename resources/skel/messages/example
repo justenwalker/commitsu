@@ -1,0 +1,33 @@
+# Always specify the corresponding template name
+# The template is the filename of the ERB in the templates folder
+template("example")
+
+# This `issues` method returns an array of Issue objects
+# The have this structure: Struct.new ( :id, :name, :summary, :url )
+iss = issues
+
+# Set up the interface
+# This is how a user is queried for information
+interface do
+  # summary(instance_variable_name,{
+  #   :text   => 'Text to be prompted',
+  #   :length => 50 # Maximum length of the field
+  # })
+  summary('summary',{
+    :text     => 'Enter Commit Summary: ',
+    :length   => 50
+  })
+  # Prompt the user to select a choice of available options
+  # choice(instance_variable_name,{
+  #   :text   => 'Text to be prompted',
+  #   :choices => [{:name => 'Display Name', :value => 'Value'},...]
+  # })
+  choice('issue',{
+    :text    => 'Choose a relevant issue: ',
+    :choices => [{:name => 'NONE', :value => nil}] + (iss.map { |i| { :name => i.name, :value => i.url } })
+  })
+  summary('body',{
+    :text   => 'Enter Commit Message Body: ',
+    :length => 512,
+  })
+end

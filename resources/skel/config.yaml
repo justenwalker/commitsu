@@ -1,0 +1,14 @@
+---
+user:
+  fullname: User Full Name
+  email: name@example.com
+# Configure Trello Issue Tracker
+trello:
+  # Trello Username
+  user: username
+  # Get your API Key from:
+  # https://trello.com/1/appKey/generate
+  api_key:
+  # Authorize your API
+  # https://trello.com/1/authorize?key=YOUR_API_KEY&name=My+Application&expiration=never&response_type=token
+  user_token:

@@ -1,0 +1,7 @@
+<%= @summary %>
+
+<%- if @issue -%>
+<%= @issue %>
+
+<%- end -%>
+<%= word_wrap(@body,72) %>
